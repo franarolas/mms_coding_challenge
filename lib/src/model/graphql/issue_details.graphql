@@ -1,0 +1,13 @@
+query IssueDetails($number: Int!) {
+  repository(owner: "flutter", name: "flutter") {
+    issue(number: $number) {
+      number
+      title
+      bodyText
+      url
+      author {
+        login
+      }
+    }
+  }
+}

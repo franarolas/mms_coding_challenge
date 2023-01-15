@@ -1,0 +1,21 @@
+query AllIssues($state: [IssueState!], $sortBy: IssueOrderField!, $cursor: String, $nIssues: Int!) {
+  repository(owner: "flutter", name: "flutter") {
+    issues(
+      states: $state
+      orderBy: { direction: DESC, field: $sortBy }
+      first: $nIssues
+      after: $cursor
+    ) {
+      edges {
+        node {
+          number
+          title
+          author {
+            login
+          }
+        }
+        cursor
+      }
+    }
+  }
+}
